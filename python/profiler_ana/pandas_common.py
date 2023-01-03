@@ -30,7 +30,7 @@ MARKERS = ["s", "o", 4, 5, 7, "|", "*", 1, 2, 3, 4, 6, 7]
 FIGURE_OUTPUTS = ["png", "eps", "svg"]
 
 
-import matplotlib
+import matplotlib  # noqa: E402
 
 matplotlib.style.use("ggplot")
 matplotlib.rc("font", family="sans-serif")
@@ -367,7 +367,7 @@ def plot_common(
     margin=(0.05, 0.05),
     baseline_name=None,
 ):
-    fig = plt.figure()
+    fig = plt.figure()  # noqa: F841
     color_map = color_map or color_util.discrete_cmap(len(labels), bg_color=bg_color)
     subplot = current.plot(x=xcol, y=ycols, colormap=color_map)
     for i, line in enumerate(subplot.lines):
@@ -407,7 +407,7 @@ def plot_common(
         labels.append("Remainder")
         selection = current[cols]
 
-    labels = [texsafe[l] for l in labels]
+    labels = [texsafe[l] for l in labels]  # noqa: E741
     donot_data = selection.transpose()
     per_row = 4
     col_count = len(cols) if len(cols) < per_row else per_row
@@ -470,7 +470,10 @@ def plot_common(
         colormap=color_map,
     )
     for p in ax.patches:
-        l, r = (p.get_x() + p.get_width() / 2, p.get_y() + p.get_height() / 2)
+        l, r = (  # noqa: E741
+            p.get_x() + p.get_width() / 2,
+            p.get_y() + p.get_height() / 2,
+        )
         bbox_props = dict(boxstyle="round,pad=0.1", fc="white", alpha=0.6)
         ax.text(
             l,

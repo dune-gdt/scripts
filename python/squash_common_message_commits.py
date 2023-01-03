@@ -48,7 +48,11 @@ def edit_mode(git_input):
     for line in fileinput.input(files=git_input, inplace=True, backup=".orig"):
         tokens = line.split(" ")
         try:
-            verb, commit, message = tokens[0], tokens[1], " ".join(tokens[2:])
+            verb, commit, message = (  # noqa: F841
+                tokens[0],
+                tokens[1],
+                " ".join(tokens[2:]),
+            )
         except IndexError:
             # not a useful line
             continue

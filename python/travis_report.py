@@ -27,7 +27,7 @@ You can now commit these changes in the usual way or amend your previous commits
 If you have any questions, please add a comment in the pull request.
 
 
-"""
+"""  # noqa: E501
 
 
 def get_patch_for_dir(basedir):
@@ -43,7 +43,7 @@ def get_patch_for_dir(basedir):
         clangformat = subprocess.check_output(
             ["git", "config", "hooks.clangformat"], universal_newlines=True
         ).strip()
-    except subprocess.CalledProcessError as _:
+    except subprocess.CalledProcessError as _:  # noqa: F841
         clangformat = "clang-format"
 
     files = [

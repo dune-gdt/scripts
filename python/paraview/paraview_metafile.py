@@ -22,7 +22,7 @@ def writePVD(prefixes):
         "only consider files named PREFIXsome_numberEXT"
         try:
             cutoff = int(sys.argv[1])
-        except:
+        except:  # noqa: E722
             cutoff = None
         fn = "%s.pvd" % pref
         print

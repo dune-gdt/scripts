@@ -3,7 +3,7 @@
 fn = "timeseries.csv"
 col = "L2-Pres_1"
 scale = 10
-import csv
+import csv  # noqa: E402
 
 out = open("new_" + fn, "wb")
 csv_reader = csv.DictReader(open(fn, "rb"), delimiter="\t")

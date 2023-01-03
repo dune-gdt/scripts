@@ -22,7 +22,7 @@ HEADER = open(HEADER_FN, "rb").readline().strip()
 IN_FIELDS = ["procs"] + HEADER.split(IN_DELIMTER)
 letters = [chr(c) for c in range(ord("A"), ord("Z") + 1)]
 LETTERS = (
-    letters + ["A" + l for l in letters] + ["B" + l for l in letters]
+    letters + ["A" + l for l in letters] + ["B" + l for l in letters]  # noqa: E741
 )  # itertools.prduct, letters, lterrs) ?
 
 
@@ -81,10 +81,10 @@ def result_file(exclude, out_fn):
             fac_row["procs"] = "Factor {1}/{0}".format(pows[base_idx], pows[idx])
             out_csv.writerow(fac_row)
 
-        for l in range(1, len(mean_rows)):
+        for l in range(1, len(mean_rows)):  # noqa: E741
             w_row(l - 1, l)
             out_row_count += 1
-        for l in range(1, len(mean_rows)):
+        for l in range(1, len(mean_rows)):  # noqa: E741
             w_row(0, l)
             out_row_count += 1
 

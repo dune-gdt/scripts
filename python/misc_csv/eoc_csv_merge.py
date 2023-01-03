@@ -30,7 +30,7 @@ def texsafe(string):
 marks = ("|", "x", "o", "*", "-", "#", "@")
 colors = ("red", "blue", "green", "yellow", "cyan", "magenta", "black")
 
-from optparse import OptionParser
+from optparse import OptionParser  # noqa: E402
 
 parser = OptionParser()
 parser.add_option(
