@@ -34,19 +34,22 @@ def coremap():
     try:
         import numa
     except ImportError:
-        print('This script requires the libnuma python bindings')
+        print("This script requires the libnuma python bindings")
         raise RuntimeError("Numa not available")
     if not numa.available():
         raise RuntimeError("Numa not available")
-    node_to_core = {int(i): deque([int(k) for k in numa.node_to_cpus(i)]) for i in range(numa.get_max_node() + 1)}
+    node_to_core = {
+        int(i): deque([int(k) for k in numa.node_to_cpus(i)])
+        for i in range(numa.get_max_node() + 1)
+    }
     total_core = max(itertools.chain(*node_to_core.values())) + 1
     return node_to_core, total_core
 
 
 def _single_run(cores, arg_fmt):
     args = [a.format(CORES=cores, CORECOUNT=len(cores)) for a in arg_fmt]
-    corestring = ','.join([str(i) for i in cores])
-    subprocess.call(['numactl', '-C', corestring] + args)
+    corestring = ",".join([str(i) for i in cores])
+    subprocess.call(["numactl", "-C", corestring] + args)
 
 
 def _assign_core(node_to_core, core_count):
@@ -75,9 +78,9 @@ def run(min_core, max_core, arg_fmt):
         core_count *= 2
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     arguments = docopt.docopt(__doc__)
-    min_core = int(arguments['MIN_CORE'])
-    max_core = int(arguments['MAX_CORE'])
-    arg_fmt = arguments['ARG_FMT']
+    min_core = int(arguments["MIN_CORE"])
+    max_core = int(arguments["MAX_CORE"])
+    arg_fmt = arguments["ARG_FMT"]
     run(min_core, max_core, arg_fmt)
