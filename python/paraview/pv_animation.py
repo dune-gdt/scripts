@@ -1,7 +1,7 @@
 #!/usr/bin/env pvbatch
 import os
 
-from paraview.simple import *
+from paraview.simple import *  # noqa: F403
 
 
 try:
@@ -10,14 +10,22 @@ try:
     def make_abs(input_path):
         abspath = os.path.abspath(input_path)
         if not os.path.exists(abspath):
-            raise Exception('required absolute path %s not found' % abspath)
+            raise Exception("required absolute path %s not found" % abspath)
         return abspath
 
-    parser = argparse.ArgumentParser(description='output animation')
-    parser.add_argument('state', metavar='state', type=make_abs, nargs='?',
-                        help='paraview state file')
-    parser.add_argument('-o', '--output', type=str, nargs='?', default='animation.png',
-                        help='output file template', metavar='filename')
+    parser = argparse.ArgumentParser(description="output animation")
+    parser.add_argument(
+        "state", metavar="state", type=make_abs, nargs="?", help="paraview state file"
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        type=str,
+        nargs="?",
+        default="animation.png",
+        help="output file template",
+        metavar="filename",
+    )
     args = parser.parse_args()
     state = args.state
     outfile = args.filename
@@ -27,17 +35,17 @@ except ImportError:
     try:
         state = sys.argv[1]
         outfile = sys.argv[2]
-    except IndexError, e:
-        print('python < 2.7 and too few input args')
+    except IndexError as e:  # noqa: F841
+        print("python < 2.7 and too few input args")
         sys.exit(-1)
 
-servermanager.LoadState(state)
+servermanager.LoadState(state)  # noqa: F405
 
-AnimationScene1 = GetAnimationScene()
+AnimationScene1 = GetAnimationScene()  # noqa: F405
 
-writer = servermanager.vtkSMAnimationSceneImageWriter()
+writer = servermanager.vtkSMAnimationSceneImageWriter()  # noqa: F405
 writer.SetFileName(outfile)
 writer.SetFrameRate(1)
 writer.SetAnimationScene(AnimationScene1.SMProxy)
 if not writer.Save():
-    raise exceptions.RuntimeError, "Saving of animation failed!"
+    raise exceptions.RuntimeError("Saving of animation failed!")  # noqa: F405
