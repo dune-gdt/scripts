@@ -7,7 +7,7 @@ OUR=${1:-4.9}
 
 ${SUDO} apt-add-repository -y "ppa:ubuntu-toolchain-r/test"
 ${SUDO} apt-get update
-${SUDO} apt-get install gcc-${OUR} g++-${OUR} gcc-${OUR}-base libgcc-${OUR}-dev libstdc++-${OUR}-dev 
+${SUDO} apt-get install gcc-${OUR} g++-${OUR} gcc-${OUR}-base libgcc-${OUR}-dev libstdc++-${OUR}-dev
 ${SUDO} update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${UBUNTU} 100
 ${SUDO} update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${OUR} 50
 ${SUDO} update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${UBUNTU} 100
