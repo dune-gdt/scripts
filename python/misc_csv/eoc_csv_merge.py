@@ -102,7 +102,7 @@ with open(out_fn, "wb") as out_file:
 
     target_rows = [dict() for i in range(row_count)]
     for title, reader in readers.iteritems():
-        for (c_id, l_row) in zip(range(row_count), reader):
+        for c_id, l_row in zip(range(row_count), reader):
             if c_id == 0:  # skip header row
                 continue
             for key, value in l_row.iteritems():
@@ -118,12 +118,12 @@ with open(out_fn, "wb") as out_file:
 
 with open(tex_fn, "wb") as tex_file:
     tex_file.write("\\begin{figure}")
-    for (i, prefix) in zip(range(len(prefixes)), prefixes):
+    for i, prefix in zip(range(len(prefixes)), prefixes):
         beginSubfloat(tex_file)
         tex_file.write(
             "xlabel=%s,\nylabel=$ERR_{%s}$]\n" % (first_col, texsafe(prefix))
         )
-        for (title, color, mark) in zip(titles, colors, marks):
+        for title, color, mark in zip(titles, colors, marks):
             tex_file.write(
                 "\\addplot[color=%s,mark=%s]\ntable[x=%s,y=%s%s] {%s};"
                 % (

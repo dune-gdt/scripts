@@ -27,7 +27,6 @@ LETTERS = (
 
 
 def result_file(exclude, out_fn):
-
     out_fields = [f for f in IN_FIELDS if exclude not in f and "run" not in f]
     mean_rows = []
     with open(out_fn, "wb") as outfile:
@@ -37,7 +36,6 @@ def result_file(exclude, out_fn):
         result_count = 0
         pows = []
         for procs in [int(math.pow(2, i)) for i in range(MIN_POW, MAX_POW + 1)]:
-
             for result_count, sub in enumerate(
                 [
                     f
