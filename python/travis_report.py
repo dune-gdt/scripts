@@ -43,7 +43,7 @@ def get_patch_for_dir(basedir):
         clangformat = subprocess.check_output(
             ["git", "config", "hooks.clangformat"], universal_newlines=True
         ).strip()
-    except subprocess.CalledProcessError as _:  # noqa: F841
+    except subprocess.CalledProcessError as _:
         clangformat = "clang-format"
 
     files = [
