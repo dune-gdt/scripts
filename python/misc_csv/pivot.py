@@ -4,7 +4,6 @@ from itertools import izip
 import sys
 import os
 
-
 first = sys.argv[1]
 merged = "{}_merged.csv".format("".join(first[:-4]))
 
