@@ -53,7 +53,7 @@ parser.add_option(
     type="string",
 )
 
-(options, args) = parser.parse_args()
+options, args = parser.parse_args()
 
 out_fn = "%s.csv" % options.out_prefix
 tex_fn = "%s.tex" % options.out_prefix
