@@ -9,6 +9,7 @@ Options:
   -h --help     Show this screen.
   -d --delete   print delete command.
 """
+
 from docopt import docopt
 import os
 import fnmatch
