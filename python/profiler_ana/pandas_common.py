@@ -1,6 +1,5 @@
 import math
 
-
 __author__ = "r_milk01"
 
 import os
