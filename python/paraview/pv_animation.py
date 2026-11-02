@@ -3,7 +3,6 @@ import os
 
 from paraview.simple import *  # noqa: F403
 
-
 try:
     import argparse
 
